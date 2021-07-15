@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import { TextInput, Button, Title } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import firebase from "firebase";
 import { loginModel } from "../../models/loginModel";
-import { properties } from "../../properties";
+import { properties } from "../../utils/constants/properties";
+import { loginSchemaValidation } from "../../utils/validators/loginSchemaValidation";
 import { loginFormStyle } from "../../styles";
 
 export default function LoginForm(props) {
@@ -12,17 +14,25 @@ export default function LoginForm(props) {
     const { changeForm, navigation } = props;
 
     const formik = useFormik({
-
         initialValues: initialValues(),
-        validationSchema: Yup.object(validationSchema()),
+        validationSchema: Yup.object(loginSchemaValidation()),
 
         onSubmit: (data) => {
 
-            console.log(data);
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(data.email, data.password)
+                .then((userCredential) => {
+                    console.log("Valido");
+                    navigation.navigate("Home");
+                })
+                .catch((error) => {
+                    console.log("error : " + error.code);
+                    console.log("error : " + error.message);
+                    // ..
+                });
 
-            navigation.navigate('Home');
-
-        }
+        },
     });
 
     return (
@@ -30,13 +40,13 @@ export default function LoginForm(props) {
             <Title style={loginFormStyle.btnTitle}>{properties.login_enter}</Title>
 
             <TextInput
-                label={properties.login_indentifier}
+                label={properties.login_email}
                 style={loginFormStyle.input}
                 onChangeText={(text) =>
-                    formik.setFieldValue(properties.key_indentifier, text)
+                    formik.setFieldValue(properties.key_email, text)
                 }
-                value={formik.values.indentifier}
-                error={formik.errors.indentifier}
+                value={formik.values.email}
+                error={formik.errors.email}
             />
 
             <TextInput
@@ -58,31 +68,26 @@ export default function LoginForm(props) {
                 {properties.button_text_continue}
             </Button>
 
-            <Button mode="contained"
+            <Button
+                mode="contained"
                 style={loginFormStyle.btnText}
-                onPress={() => navigation.navigate('Registro')}>
+                onPress={() => navigation.navigate("Registro")}
+            >
                 {properties.login_create_account}
             </Button>
 
-            <Button mode="contained"
+            <Button
+                mode="contained"
                 style={loginFormStyle.btnSocial}
-                onPress={changeForm}>
+                onPress={changeForm}
+            >
                 Ingresar con REDES SOCIALES
             </Button>
-
-
-
         </View>
-    )
+        
+    );
 }
 
 const initialValues = () => {
     return loginModel;
-};
-
-const validationSchema = () => {
-    return {
-        indentifier: Yup.string().required(true),
-        password: Yup.string().required(true),
-    };
 };

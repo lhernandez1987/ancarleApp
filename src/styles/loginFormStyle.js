@@ -19,7 +19,7 @@ const loginFormStyle = StyleSheet.create({
     },
     btnLogin: {
         padding: 5,
-        marginBottom: 70,
+        marginBottom: 40,
         backgroundColor: colors.secondary,
         borderRadius: 10
     },

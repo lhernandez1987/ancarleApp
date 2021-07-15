@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, View, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import logo from '../../assets/logo-web.png';
-import RegisterForm from './RegisterAuthScreen';
 import LoginForm from '../components/auth/LoginForm';
 import { layoutStyle } from '../styles';
 

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { Button, Title } from "react-native-paper";
 import logo from '../../assets/logo-web.png';
-import { properties } from "../properties";
-import { Auth } from './AuthScreen';
+import { properties } from "../utils/constants/properties";
 import { loginFormStyle, layoutStyle } from "../styles";
 
 export default function HomeScreen({ navigation }) {
@@ -31,6 +30,5 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 100,
         resizeMode: 'contain',
-        //marginBottom: 0
     },
 });

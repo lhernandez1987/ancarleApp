@@ -3,51 +3,39 @@ import { StyleSheet, View, Image } from "react-native";
 import { TextInput, Button, Title } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import firebase from "firebase";
 //import Toast from 'react-native-root-toast';
 import { loginModel } from "../models/loginModel";
-import { properties } from "../properties";
-import firebase from "../dataBase/firebase";
+import { properties } from "../utils/constants/properties";
 import logo from '../../assets/logo-web.png';
+import { loginSchemaValidation } from "../utils/validators/loginSchemaValidation";
 import { loginFormStyle, layoutStyle } from "../styles";
 
 export default function RegisterAuthScreen({ navigation }) {
-
-
-    //const { changeForm, navigation } = props;
 
     const [loading, setLoading] = useState(false);
 
     const formik = useFormik({
 
         initialValues: initialValues(),
-        validationSchema: Yup.object(validationSchema()),
+        validationSchema: Yup.object(loginSchemaValidation()),
 
         onSubmit: async (data) => {
 
             setLoading(true);
 
-            try {
-
-                await firebase.db.collection('user').add({
-
-                    username: data.username,
-                    email: data.email,
-                    password: data.password,
-                    repeatPassword: data.repeatPassword
-
+            firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
+                .then(userCredential => {
+                    alert('guardado')
+                    navigation.navigate('Login');
                 })
+                .catch((error) => {
+                    console.log('error : ' + error.code);
+                    console.log('error : ' + error.message);
+                });
 
-                //alert('guardado')
-
-                navigation.navigate('Login')
-
-            } catch (error) {
-
-                setLoading(false);
-
-            }
         }
-    });
+    })
 
     return (
         <View style={layoutStyle.container}>
@@ -67,14 +55,6 @@ export default function RegisterAuthScreen({ navigation }) {
             />
 
             <TextInput
-                label={properties.login_name}
-                style={loginFormStyle.input}
-                onChangeText={(text) => formik.setFieldValue(properties.key_name, text)}
-                value={formik.values.username}
-                error={formik.errors.username}
-            />
-
-            <TextInput
                 label={properties.login_password}
                 style={loginFormStyle.input}
                 secureTextEntry
@@ -83,17 +63,6 @@ export default function RegisterAuthScreen({ navigation }) {
                 }
                 value={formik.values.password}
                 error={formik.errors.password}
-            />
-
-            <TextInput
-                label={properties.login_repeatPassword}
-                style={loginFormStyle.input}
-                secureTextEntry
-                onChangeText={(text) =>
-                    formik.setFieldValue(properties.key_repeatPassword, text)
-                }
-                value={formik.values.repeatPassword}
-                error={formik.errors.repeatPassword}
             />
 
             <Button
@@ -111,17 +80,6 @@ export default function RegisterAuthScreen({ navigation }) {
 
 const initialValues = () => {
     return loginModel;
-};
-
-const validationSchema = () => {
-    return {
-        email: Yup.string().email(true).required(true),
-        username: Yup.string().required(true),
-        password: Yup.string().required(true),
-        repeatPassword: Yup.string()
-            .required(true)
-            .oneOf([Yup.ref(properties.key_password)], true),
-    };
 };
 
 const styles = StyleSheet.create({
