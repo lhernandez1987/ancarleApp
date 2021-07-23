@@ -6,10 +6,10 @@ import * as Yup from "yup";
 import firebase from "firebase";
 //import Toast from 'react-native-root-toast';
 import { loginModel } from "../models/loginModel";
-import { properties } from "../utils/constants/properties";
-import logo from '../../assets/logo-web.png';
-import { loginSchemaValidation } from "../utils/validators/loginSchemaValidation";
-import { loginFormStyle, layoutStyle } from "../styles";
+import { properties } from "../../../utils/constants/properties";
+import logo from '../../../../assets/logo-web.png';
+import { loginSchemaValidation } from "../../../utils/validators/loginSchemaValidation";
+import { formStyle, layoutStyle } from "../../../styles";
 
 export default function RegisterAuthScreen({ navigation }) {
 
@@ -42,11 +42,11 @@ export default function RegisterAuthScreen({ navigation }) {
 
             <Image style={styles.logo} source={logo} />
 
-            <Title style={loginFormStyle.btnTitle}>{properties.login_create_account}</Title>
+            <Title style={formStyle.btnTitle}>{properties.login_create_account}</Title>
 
             <TextInput
                 label={properties.login_email}
-                style={loginFormStyle.input}
+                style={formStyle.input}
                 onChangeText={(text) =>
                     formik.setFieldValue(properties.key_email, text)
                 }
@@ -56,7 +56,7 @@ export default function RegisterAuthScreen({ navigation }) {
 
             <TextInput
                 label={properties.login_password}
-                style={loginFormStyle.input}
+                style={formStyle.input}
                 secureTextEntry
                 onChangeText={(text) =>
                     formik.setFieldValue(properties.key_password, text)
@@ -67,7 +67,7 @@ export default function RegisterAuthScreen({ navigation }) {
 
             <Button
                 mode="contained"
-                style={loginFormStyle.btnLogin}
+                style={formStyle.btnLogin}
                 onPress={formik.handleSubmit}
                 loading={loading}
             >

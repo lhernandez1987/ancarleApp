@@ -1,4 +1,4 @@
 import layoutStyle from "./layout";
-import loginFormStyle from "./loginFormStyle";
+import formStyle from "./formStyle";
 
-export { layoutStyle, loginFormStyle };
+export { layoutStyle, formStyle };
