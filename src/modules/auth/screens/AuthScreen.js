@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Image, KeyboardAvoidingView } from "react-native";
 import logo from '../../../../assets/logo-web.png';
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
+import RegisterAuthScreen from "./RegisterAuthScreen";
 import { layoutStyle } from "../../../styles";
 
 export default function AuthScreen({ navigation }) {
-
-  const [showLogin, setShowLogin] = useState(false);
-
-  const changeForm = () => {
-    setShowLogin(!showLogin);
-  };
 
   return (
     <View style={layoutStyle.container}>
@@ -19,7 +14,7 @@ export default function AuthScreen({ navigation }) {
 
       <KeyboardAvoidingView>
 
-        <LoginForm changeForm={changeForm} navigation={navigation} />
+        <LoginForm navigation={navigation} />
 
       </KeyboardAvoidingView>
 

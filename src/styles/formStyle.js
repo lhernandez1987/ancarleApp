@@ -23,7 +23,7 @@ const loginFormStyle = StyleSheet.create({
         backgroundColor: colors.secondary,
         borderRadius: 10
     },
-    btnSocial: {
+    btnPrimary: {
         padding: 5,
         marginTop: 10,
         marginBottom: 70,

@@ -40,8 +40,6 @@ export default function RegisterAuthScreen({ navigation }) {
     return (
         <View style={layoutStyle.container}>
 
-            <Image style={styles.logo} source={logo} />
-
             <Title style={formStyle.btnTitle}>{properties.login_create_account}</Title>
 
             <TextInput

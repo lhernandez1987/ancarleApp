@@ -1,11 +1,14 @@
-import React from "react";
-import { StyleSheet, View, Image } from "react-native";
-import { Button, Title } from "react-native-paper";
-import logo from '../../../../assets/logo-web.png';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, Image, KeyboardAvoidingView } from "react-native";
+import { Title } from "react-native-paper";
+import logo from "../../../../assets/logo-web.png";
+import LoginButtons from "../../auth/components/organisms/LoginButtons";
 import { properties } from "../../../utils/constants/properties";
+import { onAuthStateChanged, signOut } from "../../auth/services/authService";
 import { formStyle, layoutStyle } from "../../../styles";
 
 export default function HomeScreen({ navigation }) {
+
   return (
     <View style={layoutStyle.container}>
 
@@ -13,13 +16,11 @@ export default function HomeScreen({ navigation }) {
 
       <Title style={formStyle.btnTitle}>{properties.home_title}</Title>
 
-      <Button
-        mode="contained"
-        style={formStyle.btnSuccess}
-        onPress={() => navigation.navigate("Login")}
-      >
-        {properties.home_identify_yourself}
-      </Button>
+      <KeyboardAvoidingView>
+
+        <LoginButtons navigation={navigation} />
+
+      </KeyboardAvoidingView>
 
     </View>
   );

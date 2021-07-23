@@ -3,14 +3,14 @@ import { View } from "react-native";
 import { TextInput, Button, Title } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import firebase from "firebase";
-import { loginModel } from "../models/loginModel";
-import { properties } from "../../../utils/constants/properties";
-import { loginSchemaValidation } from "../../../utils/validators/loginSchemaValidation";
-import { formStyle } from "../../../styles";
+import { loginModel } from "../../models/loginModel";
+import { properties } from "../../../../utils/constants/properties";
+import { loginSchemaValidation } from "../../../../utils/validators/loginSchemaValidation";
+import { signInWithEmailAndPassword } from "../../services/authService";
+import { formStyle } from "../../../../styles";
 
 export default function LoginForm(props) {
-  const { changeForm, navigation } = props;
+  const { navigation } = props;
 
   const formik = useFormik({
 
@@ -18,21 +18,9 @@ export default function LoginForm(props) {
     validationSchema: Yup.object(loginSchemaValidation()),
 
     onSubmit: (data) => {
-
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(data.email, data.password)
-        .then((userCredential) => {
-          console.log("Valido");
-          navigation.navigate("Home");
-        })
-        .catch((error) => {
-          console.log("error : " + error.code);
-          console.log("error : " + error.message);
-          // ..
-        });
-
+      signInWithEmailAndPassword(data.email, data.password, navigation);
     },
+    
   });
 
   return (
@@ -74,10 +62,6 @@ export default function LoginForm(props) {
         onPress={() => navigation.navigate("Registro")}
       >
         {properties.login_create_account}
-      </Button>
-
-      <Button mode="contained" style={formStyle.btnSocial} onPress={changeForm}>
-        Ingresar con REDES SOCIALES
       </Button>
     </View>
   );

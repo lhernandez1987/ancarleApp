@@ -9,7 +9,8 @@ export const properties = {
     login_indentifier: 'Email o userName',
     login_password: 'Password',
     login_repeatPassword: 'Confirm Password',
-    button_login_accept: 'Accept',
+
+    button_logout: 'Salir',
     button_login: 'log in',
 
     // keyCode RegisterForm
