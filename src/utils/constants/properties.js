@@ -20,11 +20,18 @@ export const properties = {
     key_repeatPassword: 'repeatPassword',
     key_indentifier: 'indentifier',
 
+    //keyCode error
+    key_auth_user_not_found: 'auth/user-not-found',
+    key_auth_wrong_password: 'auth/wrong-password',
+    key_auth_error: 'ERROR:',
+
     //Utils
     button_text_continue: 'continuar',
     
     //message
     message_error_login: 'Error al registrar el usuario.',
+    message_auth_user_not_found: 'Registro de usuario no encontrado.',
+    message_auth_wrong_password: 'la contraseña no es válida o el usuario no tiene contraseña.',
 
     //Home
     home_title: 'Home',

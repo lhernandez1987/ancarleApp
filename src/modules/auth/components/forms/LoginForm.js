@@ -20,11 +20,12 @@ export default function LoginForm(props) {
     onSubmit: (data) => {
       signInWithEmailAndPassword(data.email, data.password, navigation);
     },
-    
+
   });
 
   return (
     <View>
+
       <Title style={formStyle.btnTitle}>{properties.login_enter}</Title>
 
       <TextInput
@@ -41,6 +42,7 @@ export default function LoginForm(props) {
         label={properties.login_password}
         style={formStyle.input}
         secureTextEntry
+        right={<TextInput.Icon name="eye" />}
         onChangeText={(text) =>
           formik.setFieldValue(properties.key_password, text)
         }

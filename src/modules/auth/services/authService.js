@@ -1,28 +1,16 @@
 import firebase from "firebase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import alertValidation from "../../../utils/validators/alertValidation";
 
 export const onAuthStateChanged = (setIsloggedIn) => {
 
   firebase.auth().onAuthStateChanged((user) => {
 
-    if (user?.uid) {
-
-      setIsloggedIn(true);
-
-      console.log("UID: " + user.uid);
-
-    } else {
-
-      setIsloggedIn(false);
-    }
+    user?.uid ? setIsloggedIn(true) : setIsloggedIn(false);
 
   });
 
   return setIsloggedIn;
-};
-
-const saveLogin = async (isloggedIn) => {
-  await AsyncStorage.setItem("isloggedIn", JSON.stringify(isloggedIn));
 };
 
 export const signOut = (setIsloggedIn) => {
@@ -45,22 +33,22 @@ export const signOut = (setIsloggedIn) => {
   return setIsloggedIn;
 };
 
-  export const signInWithEmailAndPassword = (email, password, navigation) => {
+export const signInWithEmailAndPassword = (email, password, navigation) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
 
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      navigation.navigate("Home");
 
-        console.log("Valido");
+    })
+    .catch((error) => {
 
-        navigation.navigate("Home");
+      alertValidation(error.code);
+      
+    });
+};
 
-      })
-      .catch((error) => {
-
-        console.log("error : " + error.code);
-        console.log("error : " + error.message);
-
-      });
-  };
+const saveLogin = async (isloggedIn) => {
+  await AsyncStorage.setItem("isloggedIn", JSON.stringify(isloggedIn));
+};
