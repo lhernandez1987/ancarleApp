@@ -1,6 +1,6 @@
 export const loginModel = {
 
-    username: '',
+    displayName: '',
     email: '',
     password: '',
     repeatPassword: '',

@@ -10,7 +10,7 @@ export default function alertValidation(codeTypeId) {
       return Alert.alert(
         properties.key_auth_error,
         properties.message_auth_user_not_found,
-        [{ text: "OK", onPress: () => null }]
+        [{ text: "nada", onPress: () => null }]
       );
 
     case properties.key_auth_wrong_password:
@@ -18,6 +18,14 @@ export default function alertValidation(codeTypeId) {
       return Alert.alert(
         properties.key_auth_error,
         properties.message_auth_wrong_password,
+        [{ text: "OK", onPress: () => null }]
+      );
+
+    case properties.key_auth_email_already_in_use:
+
+      return Alert.alert(
+        properties.key_auth_error,
+        properties.message_auth_email_already_in_use,
         [{ text: "OK", onPress: () => null }]
       );
 

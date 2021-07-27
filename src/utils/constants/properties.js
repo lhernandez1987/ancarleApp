@@ -5,7 +5,7 @@ export const properties = {
     login_create_account: 'Crear cuenta',
     login_enter: 'Iniciar sesión',
     login_email: 'Email',
-    login_name: 'userName',
+    login_name: 'Name',
     login_indentifier: 'Email o userName',
     login_password: 'Password',
     login_repeatPassword: 'Confirm Password',
@@ -15,7 +15,7 @@ export const properties = {
 
     // keyCode RegisterForm
     key_email: 'email',
-    key_name: 'username',
+    key_name: 'displayName',
     key_password: 'password',
     key_repeatPassword: 'repeatPassword',
     key_indentifier: 'indentifier',
@@ -23,6 +23,7 @@ export const properties = {
     //keyCode error
     key_auth_user_not_found: 'auth/user-not-found',
     key_auth_wrong_password: 'auth/wrong-password',
+    key_auth_email_already_in_use: 'auth/email-already-in-use',
     key_auth_error: 'ERROR:',
 
     //Utils
@@ -32,10 +33,15 @@ export const properties = {
     message_error_login: 'Error al registrar el usuario.',
     message_auth_user_not_found: 'Registro de usuario no encontrado.',
     message_auth_wrong_password: 'la contraseña no es válida o el usuario no tiene contraseña.',
+    message_auth_email_already_in_use: 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.',
 
     //Home
     home_title: 'Home',
     home_identify_yourself: 'Identifícate',
+
+    //Type
+    type_login: '[Auth] Login',
+    type_logout: '[Auth] Logout',
     
 }
 

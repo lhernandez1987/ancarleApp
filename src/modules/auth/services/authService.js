@@ -1,43 +1,70 @@
 import firebase from "firebase";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import alertValidation from "../../../utils/validators/alertValidation";
+import { properties } from "../../../utils/constants/properties";
 
-export const onAuthStateChanged = (setIsloggedIn) => {
+export const onAuthStateChanged = () => {
+  return (dispatch) => {
 
-  firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
 
-    user?.uid ? setIsloggedIn(true) : setIsloggedIn(false);
+      if (user?.uid) {
 
-  });
+        dispatch(login(user.uid, user.displayName));
 
-  return setIsloggedIn;
+      }
+
+    });
+  };
 };
 
-export const signOut = (setIsloggedIn) => {
+export const signOut = () => {
 
-  try {
+  return (dispatch) => {
 
-    firebase
-      .auth()
-      .signOut()
-      .then(() => console.log("User signed out!"));
+    try {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => console.log("User signed out!"));
 
-    setIsloggedIn(false);
+      dispatch(logout());
 
-  } catch (error) {
-
-    console.log(error);
-
-  }
-
-  return setIsloggedIn;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };
 
 export const signInWithEmailAndPassword = (email, password, navigation) => {
-  firebase
+  return (dispatch) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+
+        dispatch(login(user.uid, user.displayName));
+        navigation.navigate("Home");
+
+      })
+      .catch((error) => {
+        alertValidation(error.code);
+      });
+  };
+};
+
+export const createUserWithEmailAndPassword = (
+  { displayName, email, password },
+  navigation
+) => {
+  return (dispatch) => {
+    firebase
     .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
+    .createUserWithEmailAndPassword(email, password)
+    .then(async ({ user }) => {
+
+      await user.updateProfile({ displayName: displayName });
+
+      dispatch(login(user.uid, user.displayName))
 
       navigation.navigate("Home");
 
@@ -45,10 +72,19 @@ export const signInWithEmailAndPassword = (email, password, navigation) => {
     .catch((error) => {
 
       alertValidation(error.code);
-      
+
     });
+  }
 };
 
-const saveLogin = async (isloggedIn) => {
-  await AsyncStorage.setItem("isloggedIn", JSON.stringify(isloggedIn));
-};
+export const login = (uid, displayName) => ({
+  type: properties.type_login,
+  payload: {
+    uid,
+    displayName,
+  },
+});
+
+export const logout = () => ({
+  type: properties.type_logout,
+});

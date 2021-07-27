@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, Image, KeyboardAvoidingView } from "react-native";
 import logo from '../../../../assets/logo-web.png';
 import LoginForm from "../components/forms/LoginForm";
-import RegisterAuthScreen from "./RegisterAuthScreen";
 import { layoutStyle } from "../../../styles";
 
 export default function AuthScreen({ navigation }) {

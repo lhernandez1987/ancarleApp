@@ -3,14 +3,22 @@ import { View } from "react-native";
 import { TextInput, Button, Title } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
 import { loginModel } from "../../models/loginModel";
 import { properties } from "../../../../utils/constants/properties";
-import { loginSchemaValidation } from "../../../../utils/validators/loginSchemaValidation";
+import { loginSchemaValidation } from "../../../../utils/validators/schemaValidation";
 import { signInWithEmailAndPassword } from "../../services/authService";
 import { formStyle } from "../../../../styles";
 
 export default function LoginForm(props) {
+
   const { navigation } = props;
+
+  const dispatch = useDispatch();
+
+  //const {uid} = useSelector(state => state.auth)
+
+  //console.log('uid: ' + uid)
 
   const formik = useFormik({
 
@@ -18,7 +26,9 @@ export default function LoginForm(props) {
     validationSchema: Yup.object(loginSchemaValidation()),
 
     onSubmit: (data) => {
-      signInWithEmailAndPassword(data.email, data.password, navigation);
+
+      dispatch(signInWithEmailAndPassword(data.email, data.password, navigation));
+      
     },
 
   });
@@ -61,7 +71,7 @@ export default function LoginForm(props) {
       <Button
         mode="contained"
         style={formStyle.btnText}
-        onPress={() => navigation.navigate("Registro")}
+        onPress={() => navigation.navigate("Registro login")}
       >
         {properties.login_create_account}
       </Button>
