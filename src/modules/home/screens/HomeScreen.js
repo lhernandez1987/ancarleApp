@@ -23,6 +23,8 @@ export default function HomeScreen({ navigation }) {
 
       <Image style={styles.logo} source={logo} />
 
+      
+
       </ScrollView>
 
     </>
@@ -32,7 +34,8 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   logo: {
     width: "50%",
-    height: 40,
-    //resizeMode: "contain",
+    height: 70,
+    resizeMode: "contain",
+    marginTop: -20,
   }
 });

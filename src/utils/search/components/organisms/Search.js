@@ -8,7 +8,9 @@ export default function Search() {
     return (
         <View style={styles.container}>
             
-            <Searchbar placeholder='Busca tu producto...' />
+            <Searchbar placeholder='Busca tu producto...' style={{
+                borderRadius: 10
+            }}/>
       
         </View>
     )
@@ -20,6 +22,7 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
       paddingHorizontal: 20,
       zIndex: 1,
+      
     }
   });
   
