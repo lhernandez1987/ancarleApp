@@ -7,19 +7,17 @@ import RegisterAuthScreen from '../modules/auth/screens/RegisterAuthScreen';
 
 const Stack = createStackNavigator();
 
-export default function StackNavigator() {
+export default function AuthNavigator() {
     
     return (
-        <NavigationContainer>
-
+        
       <Stack.Navigator>
 
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
-        <Stack.Screen name="Login" component={AuthScreen} />
-        <Stack.Screen name="Registro login" component={RegisterAuthScreen} />
+        <Stack.Screen name="home" component={HomeScreen} options={{ title: 'Inicio', headerShown: false }} />
+        <Stack.Screen name="login" component={AuthScreen} options={{ title: 'Inicio sesíon' }} />
+        <Stack.Screen name="registro" component={RegisterAuthScreen} options={{ title: 'Registro' }} />
 
       </Stack.Navigator>
 
-    </NavigationContainer>
     )
 }

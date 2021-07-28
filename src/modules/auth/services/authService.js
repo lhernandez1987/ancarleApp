@@ -43,7 +43,7 @@ export const signInWithEmailAndPassword = (email, password, navigation) => {
       .then(({ user }) => {
 
         dispatch(login(user.uid, user.displayName));
-        navigation.navigate("Home");
+        navigation.navigate("home");
 
       })
       .catch((error) => {
@@ -66,7 +66,7 @@ export const createUserWithEmailAndPassword = (
 
       dispatch(login(user.uid, user.displayName))
 
-      navigation.navigate("Home");
+      navigation.navigate("home");
 
     })
     .catch((error) => {

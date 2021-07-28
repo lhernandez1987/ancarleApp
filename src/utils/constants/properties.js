@@ -10,7 +10,7 @@ export const properties = {
     login_password: 'Password',
     login_repeatPassword: 'Confirm Password',
 
-    button_logout: 'Salir',
+    button_logout: 'Cerrar sesión',
     button_login: 'log in',
 
     // keyCode RegisterForm

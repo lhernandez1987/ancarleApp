@@ -38,7 +38,7 @@ export default function LoginButtons(props) {
         <Button
           mode="contained"
           style={formStyle.btnSuccess}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("login")}
         >
           {properties.home_identify_yourself}
         </Button>

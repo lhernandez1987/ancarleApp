@@ -71,7 +71,7 @@ export default function LoginForm(props) {
       <Button
         mode="contained"
         style={formStyle.btnText}
-        onPress={() => navigation.navigate("Registro login")}
+        onPress={() => navigation.navigate("registro")}
       >
         {properties.login_create_account}
       </Button>

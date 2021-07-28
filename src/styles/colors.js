@@ -6,7 +6,7 @@ const colors = {
     fontLight: '#fff',
     //Background
     bgLight: '#fff',
-    bgDark: '#16222b'
+    bgDark: '#2f424c'
 };
 
 export default colors;

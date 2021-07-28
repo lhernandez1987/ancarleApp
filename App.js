@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
-import StackNavigator from './src/navigations/StackNavigator';
+import AppNavigation from './src/navigations/AppNavigation';
 
 //Firebase Conextion
 import firebase from 'firebase/app';
@@ -16,7 +16,7 @@ export default function App() {
 
     <Provider store={store}>
 
-    <StackNavigator />
+    <AppNavigation />
 
     </Provider>
 
