@@ -8,7 +8,7 @@ import { loginModel } from "../../models/loginModel";
 import { properties } from "../../../../utils/constants/properties";
 import { loginRegisterSchemaValidation } from "../../../../utils/validators/schemaValidation";
 import { createUserWithEmailAndPassword } from "../../services/authService";
-import { formStyle } from "../../../../styles";
+import { formStyle } from "../../../../styles/generalStyles";
 
 export default function RegisterAuthForm(props) {
 

@@ -3,14 +3,13 @@ export const properties = {
 
     //RegisterForm
     login_create_account: 'Crear cuenta',
-    login_enter: 'Iniciar sesión',
     login_email: 'Email',
     login_name: 'Name',
     login_indentifier: 'Email o userName',
     login_password: 'Password',
     login_repeatPassword: 'Confirm Password',
 
-    button_logout: 'Cerrar sesión',
+    
     button_login: 'log in',
 
     // keyCode RegisterForm
@@ -36,13 +35,27 @@ export const properties = {
     message_auth_email_already_in_use: 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.',
 
     //Home
-    home_title: 'Home',
-    home_identify_yourself: 'Identifícate',
-
+    
     //Type
     type_login: '[Auth] Login',
     type_logout: '[Auth] Logout',
-    
+    type_home: 'home',
+    type_register: 'registro',
+    type_favorites: 'favorites',
+    type_account: 'account',
+    type_cart: 'cart',
+
+    //Label
+    label_ok: 'Ok',
+    label_find_product: 'Busca tu producto...',
+    label_start: 'Inicio',
+    label_login_enter: 'Iniciar sesión',
+    label_register: 'Registro',
+    label_favorites: 'Favoritos',
+    label_account: 'Mi cuenta',
+    label_cart: 'Mi carrito',
+    label_identify_yourself: 'Identifícate',
+    label_logout: 'Cerrar sesión',
 }
 
 

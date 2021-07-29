@@ -1,19 +1,20 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React from "react";
+import { View, ScrollView, Image } from "react-native";
+import logo from "../../../../assets/logo-web.png";
+import LoginButtons from "../../auth/components/organisms/LoginButtons";
+import { layoutStyle, images } from "../../../styles/generalStyles";
 
-export default function AccountScreen() {
-    return (
-        <View style={style.container}>
-            <Text>AccountScreen</Text>
-        </View>
-    )
+export default function AccountScreen(props) {
+
+  const { navigation } = props;
+
+  return (
+    <View style={layoutStyle.container}>
+      <ScrollView>
+        <Image style={images.logo} source={logo} />
+
+        <LoginButtons navigation={navigation} />
+      </ScrollView>
+    </View>
+  );
 }
-
-const style = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
-

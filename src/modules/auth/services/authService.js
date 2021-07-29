@@ -28,6 +28,7 @@ export const signOut = () => {
         .then(() => console.log("User signed out!"));
 
       dispatch(logout());
+      navigation.navigate(properties.type_home);
 
     } catch (error) {
       console.log(error);
@@ -43,7 +44,7 @@ export const signInWithEmailAndPassword = (email, password, navigation) => {
       .then(({ user }) => {
 
         dispatch(login(user.uid, user.displayName));
-        navigation.navigate("home");
+        navigation.navigate(properties.type_home);
 
       })
       .catch((error) => {
@@ -66,7 +67,7 @@ export const createUserWithEmailAndPassword = (
 
       dispatch(login(user.uid, user.displayName))
 
-      navigation.navigate("home");
+      navigation.navigate(properties.type_home);
 
     })
     .catch((error) => {

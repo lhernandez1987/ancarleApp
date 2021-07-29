@@ -1,18 +1,11 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React from "react";
+import { View, Text } from "react-native";
+import { layoutStyle } from "../../../styles/generalStyles";
 
 export default function CartScreen() {
-    return (
-        <View style={style.container}>
-            <Text>CartScreen</Text>
-        </View>
-    )
+  return (
+    <View style={layoutStyle.container}>
+      <Text>CartScreen</Text>
+    </View>
+  );
 }
-
-const style = StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
