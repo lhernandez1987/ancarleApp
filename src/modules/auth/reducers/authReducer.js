@@ -7,7 +7,8 @@ export default function authReducer(state = {}, action) {
             
             return {
                 uid: action.payload.uid,
-                name: action.payload.displayName
+                name: action.payload.displayName,
+                email: action.payload.email,
             };
 
         case properties.type_logout:

@@ -17,7 +17,7 @@ export const onAuthStateChanged = () => {
   };
 };
 
-export const signOut = () => {
+export const signOut = (navigation) => {
 
   return (dispatch) => {
 
@@ -25,7 +25,7 @@ export const signOut = () => {
       firebase
         .auth()
         .signOut()
-        .then(() => console.log("User signed out!"));
+        .then();
 
       dispatch(logout());
       navigation.navigate(properties.type_home);
@@ -43,7 +43,7 @@ export const signInWithEmailAndPassword = (email, password, navigation) => {
       .signInWithEmailAndPassword(email, password)
       .then(({ user }) => {
 
-        dispatch(login(user.uid, user.displayName));
+        dispatch(login(user.uid, user.displayName, user.email));
         navigation.navigate(properties.type_home);
 
       })
@@ -78,11 +78,12 @@ export const createUserWithEmailAndPassword = (
   }
 };
 
-export const login = (uid, displayName) => ({
+export const login = (uid, displayName, email) => ({
   type: properties.type_login,
   payload: {
     uid,
     displayName,
+    email,
   },
 });
 

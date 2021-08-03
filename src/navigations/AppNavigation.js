@@ -7,6 +7,7 @@ import CartScreen from "../modules/cart/screen/CartScreen";
 import FavoriteScreen from "../modules/favorites/screens/FavoriteScreen";
 import HomeScreen from "../modules/home/screens/HomeScreen";
 import { properties } from "../utils/constants/properties";
+
 import { browserStylesTab } from "../styles/generalStyles";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -14,6 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function AppNavigation() {
   return (
     <NavigationContainer>
+
       <Tab.Navigator
         barStyle={browserStylesTab.navigation}
         screenOptions={({ route }) => ({

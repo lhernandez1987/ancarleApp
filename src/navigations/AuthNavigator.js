@@ -4,12 +4,17 @@ import AuthScreen from "../modules/auth/screens/AuthScreen";
 import AccountScreen from "../modules/account/screens/AccountScreen";
 import RegisterAuthScreen from "../modules/auth/screens/RegisterAuthScreen";
 import { properties } from "../utils/constants/properties";
+import { colorStyle } from "../styles/generalStyles";
 
 const Stack = createStackNavigator();
 
 export default function AuthNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerTintColor: colorStyle.primary,
+      headerStyle: {backgroundColor: colorStyle.bgDark},
+      cardStyle: {backgroundColor: colorStyle.fontLight}
+    }}>
       <Stack.Screen
         name={properties.type_account}
         component={AccountScreen}

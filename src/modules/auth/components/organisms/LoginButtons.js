@@ -17,7 +17,7 @@ export default function LoginButtons(props) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
 
-        dispatch(login(user.uid, user.displayName));
+        dispatch(login(user.uid, user.displayName, user.email));
         setIsloggedIn(true);
 
       } else {
@@ -29,7 +29,7 @@ export default function LoginButtons(props) {
   }, []);
 
   const handleSignOut = () => {
-    dispatch(signOut());
+    dispatch(signOut(navigation));
   };
 
   return (

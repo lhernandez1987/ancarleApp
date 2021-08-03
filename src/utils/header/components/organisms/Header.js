@@ -5,12 +5,13 @@ import { Searchbar, Title } from "react-native-paper";
 import { useFonts } from "expo-font";
 import { properties } from "../../../constants/properties";
 import logo from "../../../../../assets/logo-web.png";
-import { finderSpace, images, colors } from "../../../../styles/generalStyles";
+import { headerStyle, imageStyle, colorStyle } from "../../../../styles/generalStyles";
 
 export default function Header() {
+  
   const { name } = useSelector((state) => state.auth);
 
-  null != name ? name : 'Bienvenido';
+  null != name ? name : properties.label_Welcome;
 
   const [loaded] = useFonts({
     robotoMedium: require("../../../../../assets/fonts/Roboto-Medium.ttf"),
@@ -21,18 +22,18 @@ export default function Header() {
   }
 
   return (
-    <View style={finderSpace.container}>
+    <View style={headerStyle.container}>
       <Searchbar
         placeholder={properties.label_find_product}
         style={{ borderRadius: 10 }}
       />
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <Image style={images.logo} source={logo} />
+        <Image style={imageStyle.logo} source={logo} />
         <Title
           style={{
             fontSize: 23,
             paddingTop: 15,
-            color: `${colors.fontLight}`,
+            color: `${colorStyle.fontLight}`,
             fontFamily: "robotoMedium",
             marginBottom: -18,
           }}

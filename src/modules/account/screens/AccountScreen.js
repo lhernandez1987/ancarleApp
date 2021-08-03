@@ -1,20 +1,22 @@
 import React from "react";
-import { View, ScrollView, Image } from "react-native";
-import logo from "../../../../assets/logo-web.png";
-import LoginButtons from "../../auth/components/organisms/LoginButtons";
-import { layoutStyle, images } from "../../../styles/generalStyles";
+import { ScrollView } from "react-native";
+import UserInformation from "../components/organisms/UserInformation";
+import UserMenu from "../components/organisms/UserMenu";
+import StatusBar from "../../../utils/header/components/atoms/StatusBar";
+import Header from "../../../utils/header/components/organisms/Header";
+import { colorStyle } from "../../../styles/generalStyles";
 
 export default function AccountScreen(props) {
-
   const { navigation } = props;
 
   return (
-    <View style={layoutStyle.container}>
+    <>
+      <StatusBar backgroundColor={colorStyle.bgDark} barStyle="light-content" />
+      <Header />
       <ScrollView>
-        <Image style={images.logo} source={logo} />
-
-        <LoginButtons navigation={navigation} />
+        <UserInformation />
+        <UserMenu />
       </ScrollView>
-    </View>
+    </>
   );
 }

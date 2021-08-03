@@ -9,7 +9,6 @@ export const properties = {
     login_password: 'Password',
     login_repeatPassword: 'Confirm Password',
 
-    
     button_login: 'log in',
 
     // keyCode RegisterForm
@@ -25,6 +24,9 @@ export const properties = {
     key_auth_email_already_in_use: 'auth/email-already-in-use',
     key_auth_error: 'ERROR:',
 
+    //KeyCode Message
+    key_logout: 'cerrar sesión',
+
     //Utils
     button_text_continue: 'continuar',
     
@@ -33,6 +35,7 @@ export const properties = {
     message_auth_user_not_found: 'Registro de usuario no encontrado.',
     message_auth_wrong_password: 'la contraseña no es válida o el usuario no tiene contraseña.',
     message_auth_email_already_in_use: 'La dirección de correo electrónico ya está siendo utilizada por otra cuenta.',
+    message_logout: '¿Estas seguro de que quieres salir de tu cuenta?',
 
     //Home
     
@@ -50,12 +53,15 @@ export const properties = {
     label_find_product: 'Busca tu producto...',
     label_start: 'Inicio',
     label_login_enter: 'Iniciar sesión',
-    label_register: 'Registro',
+    label_register: 'Crear cuenta',
     label_favorites: 'Favoritos',
     label_account: 'Mi cuenta',
     label_cart: 'Mi carrito',
     label_identify_yourself: 'Identifícate',
     label_logout: 'Cerrar sesión',
+    label_Welcome: 'Bienvenido (a)',
+    label_yes: 'Si',
+    label_not: 'No',
 }
 
 

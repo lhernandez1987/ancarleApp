@@ -37,10 +37,6 @@ export default function RegisterAuthForm(props) {
 
   return (
     <View>
-      <Title style={formStyle.btnTitle}>
-        {properties.login_create_account}
-      </Title>
-
       <TextInput
         label={properties.login_name}
         style={formStyle.input}
