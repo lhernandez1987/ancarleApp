@@ -1,35 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Image, KeyboardAvoidingView } from "react-native";
-import { Title } from "react-native-paper";
-import logo from "../../../../assets/logo-web.png";
-import LoginButtons from "../../auth/components/organisms/LoginButtons";
-import { properties } from "../../../utils/constants/properties";
-import { onAuthStateChanged, signOut } from "../../auth/services/authService";
-import { formStyle, layoutStyle } from "../../../styles";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ScrollView } from "react-native";
+import firebase from "firebase";
+import { login } from "../../auth/services/authService";
+import StatusBar from "../../../utils/header/components/atoms/StatusBar";
+import Header from "../../../utils/header/components/organisms/Header";
+import { colorStyle } from "../../../styles/generalStyles";
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName, user.email));
+      }
+    });
+  }, []);
 
   return (
-    <View style={layoutStyle.container}>
-
-      <Image style={styles.logo} source={logo} />
-
-      <Title style={formStyle.btnTitle}>{properties.home_title}</Title>
-
-      <KeyboardAvoidingView>
-
-        <LoginButtons navigation={navigation} />
-
-      </KeyboardAvoidingView>
-
-    </View>
+    <>
+      <ScrollView>
+        <StatusBar
+          backgroundColor={colorStyle.bgDark}
+          barStyle="light-content"
+        />
+        <Header />
+      </ScrollView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  logo: {
-    width: "100%",
-    height: 100,
-    resizeMode: "contain",
-  },
-});

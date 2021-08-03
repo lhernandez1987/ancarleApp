@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import firebase from "firebase";
 import { properties } from "../../../../utils/constants/properties";
 import { login, signOut } from "../../services/authService";
-import { formStyle } from "../../../../styles";
+import { formStyle } from '../../../../styles/generalStyles';
 
 export default function LoginButtons(props) {
 
@@ -17,7 +17,7 @@ export default function LoginButtons(props) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
 
-        dispatch(login(user.uid, user.displayName));
+        dispatch(login(user.uid, user.displayName, user.email));
         setIsloggedIn(true);
 
       } else {
@@ -29,7 +29,7 @@ export default function LoginButtons(props) {
   }, []);
 
   const handleSignOut = () => {
-    dispatch(signOut());
+    dispatch(signOut(navigation));
   };
 
   return (
@@ -38,9 +38,9 @@ export default function LoginButtons(props) {
         <Button
           mode="contained"
           style={formStyle.btnSuccess}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate(properties.type_login)}
         >
-          {properties.home_identify_yourself}
+          {properties.label_identify_yourself}
         </Button>
       ) : (
         <Button
@@ -48,7 +48,7 @@ export default function LoginButtons(props) {
           style={formStyle.btnPrimary}
           onPress={() => handleSignOut()}
         >
-          {properties.button_logout}
+          {properties.label_logout}
         </Button>
       )}
     </View>

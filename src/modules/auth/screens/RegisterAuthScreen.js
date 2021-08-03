@@ -1,26 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { View, Image, KeyboardAvoidingView } from "react-native";
 import RegisterAuthForm from "../components/forms/RegisterAuthForm";
-import logo from '../../../../assets/logo-web.png';
-import { layoutStyle } from "../../../styles";
+import logo from "../../../../assets/logo-web.png";
+import { layoutStyle, imageStyle } from "../../../styles/generalStyles";
 
 export default function RegisterAuthScreen({ navigation }) {
   return (
     <View style={layoutStyle.container}>
 
-      <Image style={styles.logo} source={logo} />
-
-      <RegisterAuthForm navigation={navigation} />
-
+     
+<Image style={imageStyle.auth} source={logo} />
+      <KeyboardAvoidingView>
+        <RegisterAuthForm navigation={navigation} />
+      </KeyboardAvoidingView>
     </View>
-  );
+  );z
 }
-
-const styles = StyleSheet.create({
-  logo: {
-    width: "100%",
-    height: 100,
-    resizeMode: "contain",
-    marginTop: 30,
-  },
-});
