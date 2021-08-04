@@ -1,18 +1,19 @@
 import React from "react";
 import { View } from "react-native";
-import { TextInput, Button, Title } from "react-native-paper";
+import { TextInput, Button } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { loginModel } from "../../models/loginModel";
 import { properties } from "../../../../utils/constants/properties";
 import { loginSchemaValidation } from "../../../../utils/validators/schemaValidation";
 import { signInWithEmailAndPassword } from "../../services/authService";
 import { formStyle } from "../../../../styles/generalStyles";
 
-export default function LoginForm(props) {
+export default function LoginForm() {
 
-  const { navigation } = props;
+  const navigation = useNavigation();
 
   const dispatch = useDispatch();
 
@@ -28,8 +29,6 @@ export default function LoginForm(props) {
     },
 
   });
-
-  // <Title style={formStyle.btnTitle}>{properties.login_enter}</Title>
 
   return (
     <View>
@@ -68,7 +67,7 @@ export default function LoginForm(props) {
         style={formStyle.btnText}
         onPress={() => navigation.navigate(properties.type_register)}
       >
-        {properties.login_create_account}
+        {properties.label_register}
       </Button>
     </View>
   );

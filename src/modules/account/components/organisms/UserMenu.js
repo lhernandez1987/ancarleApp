@@ -49,47 +49,50 @@ export default function UserMenu() {
         <List.Subheader style={{color: colorStyle.secondary, fontSize: 15}}>App</List.Subheader>
         {uid ? (
           <List.Item
-            title="Cerrar Sesión"
-            description="Cierra tu sesión"
+            title={properties.label_logout}
+            description={properties.label_you_logout}
             left={(props) => <List.Icon {...props} icon="logout" />}
             onPress={() => handleSignOut()}
           />
         ) : (
           <List.Item
-            title="Inicial Sesión"
-            description="Inicia tu sesión"
+            title={properties.label_login_enter}
+            description={properties.label_you_login_enter}
             left={(props) => <List.Icon {...props} icon="login" color="#490b94" />}
             onPress={() => navigation.navigate(properties.type_login)}
           />
         )}
         <List.Item
-          title="Mis Pedidos"
-          description="Listado de todos los pedidos"
+          title={properties.label_order_list}
+          description={properties.label_list_orders}
           left={(props) => <List.Icon {...props} icon="clipboard-list" color="#ffbf00" />}
           onPress={() => console.log("Ir a Mis Pedidos")}
         />
         <List.Item
-          title="Lista de deseos"
-          description="Listado de todos los productos que te quieres comprar"
+          title={properties.label_products_list}
+          description={properties.label_list_products_buy}
           left={(props) => <List.Icon {...props} icon="heart" color="#900" />}
           onPress={() => navigation.navigate(properties.type_favorites)}
         />
       </List.Section>
       <List.Section>
         <List.Subheader style={{color: colorStyle.primary, fontSize: 15}}>Mi cuenta</List.Subheader>
-        <List.Item
-          title="Editar informacion de tu usuario"
-          description="Cambiar datos de tu usuario"
+        {uid && 
+          <List.Item
+          title={properties.label_edit_user}
+          description={properties.label_Change_user_data}
           left={(props) => <List.Icon {...props} icon="account-edit-outline" color="#167a05" />}
-          onPress={() => console.log("Ir a cambiar nombre")}
+          onPress={() => navigation.navigate(properties.type_user)}
         />
-         
+        }
+        {uid &&
         <List.Item
-          title="Mis Direcciones"
-          description="Cambia mis direcciones de envios"
+          title={properties.label_addresses}
+          description={properties.label_change_shipping_addresses}
           left={(props) => <List.Icon {...props} icon="map" color="#083168" />}
           onPress={() => console.log("Ir a Mis Direcciones")}
         />
+        }
       </List.Section>
     </>
   );

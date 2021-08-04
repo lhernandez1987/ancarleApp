@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import AwesomeIcon from "react-native-vector-icons/FontAwesome5";
-import AuthNavigator from "./AuthNavigator";
+import UserNavigator from "./UserNavigator";
 import CartScreen from "../modules/cart/screen/CartScreen";
 import FavoriteScreen from "../modules/favorites/screens/FavoriteScreen";
 import HomeScreen from "../modules/home/screens/HomeScreen";
@@ -41,7 +41,7 @@ export default function AppNavigation() {
         />
         <Tab.Screen
           name={properties.type_account}
-          component={AuthNavigator}
+          component={UserNavigator}
           options={{ title: `${properties.label_account}` }}
         />
       </Tab.Navigator>

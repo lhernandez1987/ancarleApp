@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const loginRegisterSchemaValidation = () => {
+export const registerSchemaValidation = () => {
   return {
     displayName: Yup.string().required(true),
     email: Yup.string().email(true).required(true),

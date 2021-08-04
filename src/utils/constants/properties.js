@@ -1,19 +1,18 @@
 
 export const properties = {
 
-    //RegisterForm
-    login_create_account: 'Crear cuenta',
-    login_email: 'Email',
-    login_name: 'Name',
-    login_indentifier: 'Email o userName',
-    login_password: 'Password',
-    login_repeatPassword: 'Confirm Password',
+    //Forms
+    form_email: 'Email',
+    form_name: 'Name',
+    form_indentifier: 'Email o userName',
+    form_password: 'Password',
+    form_repeatPassword: 'Confirm Password',
 
     button_login: 'log in',
 
     // keyCode RegisterForm
     key_email: 'email',
-    key_name: 'displayName',
+    key_displayName: 'displayName',
     key_password: 'password',
     key_repeatPassword: 'repeatPassword',
     key_indentifier: 'indentifier',
@@ -42,26 +41,38 @@ export const properties = {
     //Type
     type_login: '[Auth] Login',
     type_logout: '[Auth] Logout',
-    type_home: 'home',
-    type_register: 'registro',
-    type_favorites: 'favorites',
-    type_account: 'account',
-    type_cart: 'cart',
+    type_home: '[Home] Home',
+    type_register: '[Registro] Registro',
+    type_favorites: '[Favorites] Favorites',
+    type_account: '[Account] Account',
+    type_cart: '[Cart] Cart',
+    type_user: '[User] User',
 
     //Label
     label_ok: 'Ok',
     label_find_product: 'Busca tu producto...',
     label_start: 'Inicio',
     label_login_enter: 'Iniciar sesión',
+    label_you_login_enter: 'Iniciar tu sesión',
     label_register: 'Crear cuenta',
     label_favorites: 'Favoritos',
     label_account: 'Mi cuenta',
     label_cart: 'Mi carrito',
     label_identify_yourself: 'Identifícate',
     label_logout: 'Cerrar sesión',
+    label_you_logout: 'Cerrar tu sesión',
     label_Welcome: 'Bienvenido (a)',
     label_yes: 'Si',
     label_not: 'No',
+    label_products_list: 'Lista de deseos',
+    label_list_products_buy: 'Listado de todos los productos que te quieres comprar',
+    label_order_list: 'Mis Pedidos',
+    label_list_orders: 'Listado de todos los pedidos',
+    label_edit_user: 'Editar informacion de tu usuario',
+    label_Change_user_data: 'Cambiar datos de tu usuario',
+    label_addresses: 'Mis Direcciones',
+    label_change_shipping_addresses: 'Cambia mis direcciones de envios',
+    label_new_password: 'New password',
 }
 
 

@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { View } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import { loginModel } from "../../models/loginModel";
+import { useFocusEffect } from "@react-navigation/native";
+import { userModel } from "../../models/userModel";
 import { properties } from "../../../../utils/constants/properties";
+import { getUser } from "../../../auth/services/authService";
 import { registerSchemaValidation } from "../../../../utils/validators/schemaValidation";
-import { createUserWithEmailAndPassword } from "../../services/authService";
 import { formStyle } from "../../../../styles/generalStyles";
 
-export default function RegisterAuthForm() {
-
-  const navigation = useNavigation();
-
+export default function UserInfoForm() {
   const [loading, setLoading] = useState(false);
 
-  const dispatch = useDispatch();
+  useFocusEffect(
+    useCallback(() => {
+      (() => {
+
+        const response = getUser();
+
+        response.displayName &&
+          formik.setFieldValue(
+            properties.key_displayName,
+            response.displayName
+          );
+
+        response.email &&
+          formik.setFieldValue(properties.key_email, response.email);
+          
+      })();
+    }, [])
+  );
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -25,14 +38,6 @@ export default function RegisterAuthForm() {
 
     onSubmit: (data) => {
       setLoading(true);
-
-      const parameters = {
-        displayName: data.displayName,
-        email: data.email,
-        password: data.password,
-      };
-      
-      dispatch(createUserWithEmailAndPassword(parameters, navigation));
     },
   });
 
@@ -41,7 +46,9 @@ export default function RegisterAuthForm() {
       <TextInput
         label={properties.form_name}
         style={formStyle.input}
-        onChangeText={(text) => formik.setFieldValue(properties.key_displayName, text)}
+        onChangeText={(text) =>
+          formik.setFieldValue(properties.key_displayName, text)
+        }
         value={formik.values.displayName}
         error={formik.errors.displayName}
       />
@@ -57,7 +64,7 @@ export default function RegisterAuthForm() {
       />
 
       <TextInput
-        label={properties.form_password}
+        label={properties.label_new_password}
         style={formStyle.input}
         secureTextEntry
         right={<TextInput.Icon name="eye" />}
@@ -93,5 +100,5 @@ export default function RegisterAuthForm() {
 }
 
 const initialValues = () => {
-  return loginModel;
+  return userModel;
 };

@@ -4,15 +4,14 @@ import RegisterAuthForm from "../components/forms/RegisterAuthForm";
 import logo from "../../../../assets/logo-web.png";
 import { layoutStyle, imageStyle } from "../../../styles/generalStyles";
 
-export default function RegisterAuthScreen({ navigation }) {
+export default function RegisterAuthScreen() {
   return (
     <View style={layoutStyle.container}>
-
-     
-<Image style={imageStyle.auth} source={logo} />
+      <Image style={imageStyle.auth} source={logo} />
       <KeyboardAvoidingView>
-        <RegisterAuthForm navigation={navigation} />
+        <RegisterAuthForm />
       </KeyboardAvoidingView>
     </View>
-  );z
+  );
+  z;
 }
